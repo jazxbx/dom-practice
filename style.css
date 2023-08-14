@@ -1,0 +1,16 @@
+*{
+    box-sizing: border-box;
+}
+
+.flex {
+    display:flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+}
+
+.flex > div{
+    width: 10px;
+    height: 10px;
+    background-color: red;
+   
+}
