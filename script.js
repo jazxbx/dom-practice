@@ -66,3 +66,98 @@ const smallBox = document.createElement("div");
 div4Clone.appendChild(smallBox);
 
 num4Clone.textContent = "4";
+
+for (let i = 0; i < 100; i++) {
+  const smallBox = document.createElement("div");
+  div4Clone.appendChild(smallBox);
+}
+
+// section 5 clone
+const section5Clone = section.cloneNode(true);
+body.appendChild(section5Clone);
+
+const num5Clone = section5Clone.querySelector(".number");
+const div5Clone = section5Clone.querySelector("div");
+num5Clone.textContent = "5";
+div5Clone.textContent = "";
+
+div5Clone.style.minHeight = "1.5em";
+
+let isGhostVisible = false;
+
+setInterval(function () {
+  if (isGhostVisible) {
+    div5Clone.textContent = "";
+  } else {
+    div5Clone.textContent = "👻";
+  }
+
+  isGhostVisible = !isGhostVisible;
+}, 1000);
+
+//section 6
+
+const section6Clone = section.cloneNode(true);
+body.appendChild(section6Clone);
+
+const paragraph = document.createElement("p");
+section6Clone.prepend(paragraph);
+
+const rabbitContainer = section6Clone.querySelector("div");
+const num6Clone = section6Clone.querySelector(".number");
+
+rabbitContainer.setAttribute("class", "flex");
+
+for (let i = 0; i < 20; i++) {
+  const rabbitImage = document.createElement("img");
+  rabbitContainer.appendChild(rabbitImage);
+  rabbitImage.src = "./img/rabbit.png";
+  rabbitImage.setAttribute("class", "rabbit");
+  rabbitImage.style.width = "70px";
+}
+
+const h1 = document.createElement("h1");
+rabbitContainer.after(h1);
+
+num6Clone.textContent = "6";
+
+//LAST PAGE
+
+const lastSection = document.createElement("div");
+body.appendChild(lastSection);
+lastSection.setAttribute("class", "last");
+lastSection.style.backgroundColor = "black";
+lastSection.style.padding = "10px";
+
+const lastWords = document.createElement("p");
+lastSection.appendChild(lastWords);
+
+let p = document.createElement("p");
+let count = 180;
+p.textContent = count;
+let seconds = document.createElement("p");
+seconds.textContent = "seconds.";
+
+lastWords.textContent = `This page will self-destruct in`;
+
+lastWords.appendChild(p);
+lastWords.appendChild(seconds);
+
+lastWords.style.fontSize = "100px";
+lastWords.style.color = "red";
+p.style.display = "inline";
+p.style.paddingLeft = "15px;";
+seconds.style.display = "inline";
+seconds.style.paddingLeft = "15px";
+// p.style.fontSize = "100px";
+// p.style.color = "red";
+
+const countDown = setInterval(() => {
+  count--;
+  p.textContent = count;
+
+  if (count <= 0) {
+    clearInterval(count);
+    lastWords.textContent = "BOOM!";
+  }
+}, 1000);
